@@ -13,6 +13,14 @@ export type Matcher = {
   addRoutes: (routes: Array<RouteConfig>) => void;
 };
 
+/**
+ * [createMatcher 工厂函数]
+ * @param  {[type]} routes [routes 配置]
+ * @param  {[type]} router [router 对象]
+ * @return {[type]}        [description]
+ * @desc
+ * 根据 routes 配置和 router 对象构造 Matcher 对象
+ */
 export function createMatcher (
   routes: Array<RouteConfig>,
   router: VueRouter

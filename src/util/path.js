@@ -24,6 +24,7 @@ export function resolvePath (
   }
 
   // resolve relative path
+  // 除去第一个 / 然后用 / 做拆分
   const segments = relative.replace(/^\//, '').split('/')
   for (let i = 0; i < segments.length; i++) {
     const segment = segments[i]

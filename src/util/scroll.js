@@ -59,6 +59,7 @@ export function handleScroll (
   })
 }
 
+// 记录当前状态之下页面的滚动位置
 export function saveScrollPosition () {
   const key = getStateKey()
   if (key) {
@@ -108,6 +109,7 @@ function isNumber (v: any): boolean {
   return typeof v === 'number'
 }
 
+// 滚动到指定位置
 function scrollToPosition (shouldScroll, position) {
   const isObject = typeof shouldScroll === 'object'
   if (isObject && typeof shouldScroll.selector === 'string') {

@@ -11,6 +11,7 @@ export function install (Vue) {
 
   const isDef = v => v !== undefined
 
+  // 在组件中注册 router 实例
   const registerInstance = (vm, callVal) => {
     let i = vm.$options._parentVnode
     if (isDef(i) && isDef(i = i.data) && isDef(i = i.registerRouteInstance)) {
@@ -20,12 +21,14 @@ export function install (Vue) {
 
   Vue.mixin({
     beforeCreate () {
+
       if (isDef(this.$options.router)) {
         this._routerRoot = this
         this._router = this.$options.router
         this._router.init(this)
-        Vue.util.defineReactive(this, '_route', this._router.history.current)
+        Vue.util.defineReactive(this, '_route', this._router.history.current) // 监测当前路径到变化
       } else {
+        // 从上获取路由注册的根实例
         this._routerRoot = (this.$parent && this.$parent._routerRoot) || this
       }
       registerInstance(this, this)

@@ -24,10 +24,12 @@ export class HashHistory extends History {
     const expectScroll = router.options.scrollBehavior
     const supportsScroll = supportsPushState && expectScroll
 
+    // 设置滚动行为
     if (supportsScroll) {
       setupScroll()
     }
 
+    // 监听 hash 变化跳转，用于用户直接更改 url
     window.addEventListener(supportsPushState ? 'popstate' : 'hashchange', () => {
       const current = this.current
       if (!ensureSlash()) {
@@ -66,6 +68,7 @@ export class HashHistory extends History {
     window.history.go(n)
   }
 
+  // 重新定位当前 url
   ensureURL (push?: boolean) {
     const current = this.current.fullPath
     if (getHash() !== current) {
@@ -88,6 +91,7 @@ function checkFallback (base) {
   }
 }
 
+// 保证 hash 值是由 / 开头
 function ensureSlash (): boolean {
   const path = getHash()
   if (path.charAt(0) === '/') {

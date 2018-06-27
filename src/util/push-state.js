@@ -23,7 +23,7 @@ const Time = inBrowser && window.performance && window.performance.now
   ? window.performance
   : Date
 
-let _key: string = genKey()
+let _key: string = genKey() //用于生成 state 的键值
 
 function genKey (): string {
   return Time.now().toFixed(3)
@@ -50,7 +50,7 @@ export function pushState (url?: string, replace?: boolean) {
       history.pushState({ key: _key }, '', url)
     }
   } catch (e) {
-    window.location[replace ? 'replace' : 'assign'](url)
+    window.location[replace ? 'replace' : 'assign'](url) // 直接跳转
   }
 }
 

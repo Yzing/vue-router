@@ -1,5 +1,8 @@
 /* @flow */
 
+/*
+开发测试工具
+ */
 export function assert (condition: any, message: string) {
   if (!condition) {
     throw new Error(`[vue-router] ${message}`)
